@@ -10,21 +10,28 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+@NamedQueries(value = {
+        @NamedQuery(name = Tag.QUERY_GET_TAG_ATTRIBUTE_BY_ID,
+                query = "SELECT a FROM Tag a WHERE a.id = :id")
+})
 @Entity(name = "Tag")
 @Table(name = "tag")
-@NaturalIdCache
-@Cache(
-        usage = CacheConcurrencyStrategy.READ_WRITE
-)
+//@NaturalIdCache
+//@Cache(
+//        usage = CacheConcurrencyStrategy.READ_WRITE
+//)
 public class Tag {
+
+    public static final String QUERY_GET_TAG_ATTRIBUTE_BY_ID = "SessionAttribute.getTagAttributeById";
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NaturalId
+//    @NaturalId
     private String name;
 
     @OneToMany(
+            fetch = FetchType.LAZY,
             mappedBy = "tag",
             cascade = CascadeType.ALL,
             orphanRemoval = true

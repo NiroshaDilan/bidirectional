@@ -10,8 +10,9 @@ import java.util.List;
 @Table(name = "post")
 public class Post {
 
+    @Column(unique = true)
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String title;
@@ -26,7 +27,8 @@ public class Post {
     public Post() {
     }
 
-    public Post(String title) {
+    public Post(Long id, String title) {
+        this.id = id;
         this.title = title;
     }
 

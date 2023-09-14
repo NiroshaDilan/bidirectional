@@ -12,11 +12,11 @@ public class PostTag {
     @EmbeddedId
     private PostTagId id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @MapsId("postId")
     private Post post;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @MapsId("tagId")
     private Tag tag;
 
