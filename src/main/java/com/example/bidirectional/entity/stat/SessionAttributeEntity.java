@@ -2,7 +2,9 @@ package com.example.bidirectional.entity.stat;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @NamedQueries(value = {
@@ -25,7 +27,8 @@ public class SessionAttributeEntity {
     @OneToMany(
             mappedBy = "sessionAttribute",
             cascade = CascadeType.ALL)
-    private Set<SessionStatAttributeEntity> sessionStatAttributes = new HashSet<>();
+//    private Set<SessionStatAttributeEntity> sessionStatAttributes = new HashSet<>();
+    private List<SessionStatAttributeEntity> sessionStatAttributes = new ArrayList<>();
 
     @Column(name = "name", nullable = false)
     private String name;
@@ -38,13 +41,21 @@ public class SessionAttributeEntity {
         this.id = id;
     }
 
-    public Set<SessionStatAttributeEntity> getSessionStatAttributes() {
+    public List<SessionStatAttributeEntity> getSessionStatAttributes() {
         return sessionStatAttributes;
     }
 
-    public void setSessionStatAttributes(Set<SessionStatAttributeEntity> sessionStatAttributes) {
+    public void setSessionStatAttributes(List<SessionStatAttributeEntity> sessionStatAttributes) {
         this.sessionStatAttributes = sessionStatAttributes;
     }
+
+//    public Set<SessionStatAttributeEntity> getSessionStatAttributes() {
+//        return sessionStatAttributes;
+//    }
+//
+//    public void setSessionStatAttributes(Set<SessionStatAttributeEntity> sessionStatAttributes) {
+//        this.sessionStatAttributes = sessionStatAttributes;
+//    }
 
     public String getName() {
         return name;

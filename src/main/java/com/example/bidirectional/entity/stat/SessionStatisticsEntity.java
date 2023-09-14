@@ -17,8 +17,8 @@ public class SessionStatisticsEntity {
     @OneToMany(
             mappedBy = "sessionStatistics",
             cascade = CascadeType.ALL)
-//    private Set<SessionStatAttributeEntity> sessionStatAttributes = new HashSet<>();
-    private List<SessionStatAttributeEntity> sessionStatAttributes = new ArrayList<>();
+    private Set<SessionStatAttributeEntity> sessionStatAttributes = new HashSet<>();
+//    private List<SessionStatAttributeEntity> sessionStatAttributes = new ArrayList<>();
 
 
     public SessionStatisticsEntity() {}
@@ -26,7 +26,6 @@ public class SessionStatisticsEntity {
     public SessionStatisticsEntity(String sessionId) {
         this.sessionId = sessionId;
     }
-
 
     public void addAttribute(SessionAttributeEntity sessionAttribute, Integer count) {
         SessionStatAttributeEntity sessionStatAttribute =
@@ -52,14 +51,21 @@ public class SessionStatisticsEntity {
         }
     }
 
-
-    public List<SessionStatAttributeEntity> getSessionStatAttributes() {
+    public Set<SessionStatAttributeEntity> getSessionStatAttributes() {
         return sessionStatAttributes;
     }
 
-    public void setSessionStatAttributes(List<SessionStatAttributeEntity> sessionStatAttributes) {
+    public void setSessionStatAttributes(Set<SessionStatAttributeEntity> sessionStatAttributes) {
         this.sessionStatAttributes = sessionStatAttributes;
     }
+
+    //    public List<SessionStatAttributeEntity> getSessionStatAttributes() {
+//        return sessionStatAttributes;
+//    }
+//
+//    public void setSessionStatAttributes(List<SessionStatAttributeEntity> sessionStatAttributes) {
+//        this.sessionStatAttributes = sessionStatAttributes;
+//    }
 
     public String getSessionId() {
         return sessionId;
