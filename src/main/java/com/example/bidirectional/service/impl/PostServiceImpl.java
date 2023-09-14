@@ -25,9 +25,13 @@ public class PostServiceImpl implements PostService {
 
     @Override
     public Post createPost(Post post) {
-        Optional<Tag> tag = tagRepository.findById(2L);
+        Optional<Tag> startTag = tagRepository.findById(1L);
+        Optional<Tag> activeTag = tagRepository.findById(2L);
+
         Post obj = new Post(post.getTitle());
-        obj.addTag(tag.get());
+        obj.addTag(startTag.get());
+        obj.addTag(activeTag.get());
+
         Post _post = postRepository.save(obj);
         return _post;
     }
